@@ -7,12 +7,14 @@ class Post extends Component {
     return (
       <>
         <div className="post">
-          <div>
-            <img src={this.props.data.author.avatar} />
-          </div>
           <div className="author">
-            <h1 className="autor-name">{this.props.data.author.name}</h1>
-            <h1 className="post-date">{this.props.data.date}</h1>
+            <div>
+              <img src={this.props.data.author.avatar} />
+            </div>
+            <div className="author-infos">
+              <bold className="autor-name">{this.props.data.author.name}</bold>
+              <p className="post-date">{this.props.data.date}</p>
+            </div>
           </div>
           {/* <hr/>
           <div>

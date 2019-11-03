@@ -1,27 +1,48 @@
-h1 {
-  color: black;
-  background: blue;
-  margin-top: 0;
-}
+
 div.post {
-  border-radius: 10px;
+  border-radius: 5px;
   color: black;
   box-shadow: 0 2px 3px rgba(0,0,0, 0.25);
   background: white;
   margin-top: 15px;
+}
+
+div.post .author {
   display: flex;
+  height: 100px;
 }
 
 div.post:first-child {
   margin-top: 0;
 }
 
-div.post div img {
-  width: 50px;
-  height: 50px;
+div.post .author  div img {
+  width: 40px;
+  height: 40px;
+  margin-left: 15px;
+  margin-top: 15px;
+  border-radius: 50%;
 }
 
-div div.author {
+div.post .author div.author-infos {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  margin-left: 10px;
+  color: black;
+  /* background: blue; */
+  margin-top: 15px;
+}
+
+div.post .author  div.author-infos bold {
+  font-size: 16px;
+  font-weight: bold;
+  color: #4A4A4A;
+  margin-top: 5px;
+}
+
+div.post .author  div.author-infos p {
+  font-size: 12px;
+  color: #9A9A9A;
+  margin-top: 0;
 }
