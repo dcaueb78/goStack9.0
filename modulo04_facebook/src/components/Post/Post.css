@@ -1,8 +1,7 @@
-
 div.post {
   border-radius: 5px;
   color: black;
-  box-shadow: 0 2px 3px rgba(0,0,0, 0.25);
+  box-shadow: 0 3px 10px rgba(0,0,0, 0.25);
   background: white;
   margin-top: 15px;
 }
@@ -30,15 +29,14 @@ div.post .author div.author-infos {
   width: 100%;
   margin-left: 10px;
   color: black;
-  /* background: blue; */
   margin-top: 15px;
 }
 
 div.post .author  div.author-infos b {
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: 600;
   color: #4A4A4A;
-  margin-top: 5px;
+  margin-top: 3px;
 }
 
 div.post .author  div.author-infos p {
@@ -51,6 +49,7 @@ div.post .post-content p {
   color: #4A4A4A;
   margin-left: 15px;
   margin-bottom: 15px;
+  font-size: 16px;
 }
 
 div.post .divider {

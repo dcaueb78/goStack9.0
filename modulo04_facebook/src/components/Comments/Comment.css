@@ -1,0 +1,32 @@
+div.comment {
+  display: flex;
+}
+
+div.comment img {
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+  margin-top: 15px;
+  border-radius: 50%;
+}
+
+div.comment div.comment-content {
+  margin: 10px 20px 10px 10px;
+  background: rgb(221, 221, 221);
+  width: 100%;
+  border-radius: 20px;
+}
+
+div.comment div.comment-content {
+  padding: 0 10px 0 15px;
+}
+
+div.comment div.comment-content b {
+  margin-right: 10px;
+  color: rgb(65, 65, 65);
+}
+
+div.comment div.comment-content p {
+  margin-right: 10px;
+  color: rgb(58, 58, 58);
+}

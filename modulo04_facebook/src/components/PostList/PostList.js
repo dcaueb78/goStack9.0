@@ -9,17 +9,29 @@ class PostList extends Component {
       {
         id: 1,
         author: {
-          name: "Julio Alcantara",
-          avatar: "https://avatars0.githubusercontent.com/u/37030530?s=400&u=f705aa3b2f6167576c8024dada66351655195c81&v=4"
+          name: "Cauê Kotarski",
+          avatar:
+            "https://avatars0.githubusercontent.com/u/37030530?s=400&u=f705aa3b2f6167576c8024dada66351655195c81&v=4"
         },
-        date: "04 Jun 2019",
+        date: "31 Out 2019",
         content: "Pessoal, alguém sabe se a Rocketseat está contratando?",
         comments: [
           {
             id: 1,
             author: {
               name: "Diego Fernandes",
-              avatar: "https://avatars0.githubusercontent.com/u/37030530?s=400&u=f705aa3b2f6167576c8024dada66351655195c81&v=4"
+              avatar:
+                "https://avatars1.githubusercontent.com/u/2254731?s=400&v=4"
+            },
+            content:
+              "A Rocketseat está sempre em busca de novos membros para o time, e geralmente ficamos de olho em quem se destaca no Bootcamp, inclusive 80% do nosso time de devs é composto por alunos do Bootcamp. Além disso, se você tem vontade de ensinar gravando vídeos e criando posts, pode me chamar no Discord! (Sério, me chamem mesmo, esse comentário é real)"
+          },
+          {
+            id: 2,
+            author: {
+              name: "Diego Fernandes",
+              avatar:
+                "https://avatars0.githubusercontent.com/u/37030530?s=400&u=f705aa3b2f6167576c8024dada66351655195c81&v=4"
             },
             content: "Conteúdo do comentário"
           }
@@ -29,7 +41,8 @@ class PostList extends Component {
         id: 2,
         author: {
           name: "Julio Alcantara",
-          avatar: "https://avatars0.githubusercontent.com/u/37030530?s=400&u=f705aa3b2f6167576c8024dada66351655195c81&v=4"
+          avatar:
+            "https://avatars0.githubusercontent.com/u/37030530?s=400&u=f705aa3b2f6167576c8024dada66351655195c81&v=4"
         },
         date: "04 Jun 2019",
         content: "Pessoal, alguém sabe se a Rocketseat está contratando?",
@@ -38,7 +51,8 @@ class PostList extends Component {
             id: 1,
             author: {
               name: "Diego Fernandes",
-              avatar: "https://avatars0.githubusercontent.com/u/37030530?s=400&u=f705aa3b2f6167576c8024dada66351655195c81&v=4"
+              avatar:
+                "https://avatars0.githubusercontent.com/u/37030530?s=400&u=f705aa3b2f6167576c8024dada66351655195c81&v=4"
             },
             content: "Conteúdo do comentário"
           }
@@ -48,7 +62,8 @@ class PostList extends Component {
         id: 3,
         author: {
           name: "Julio Alcantara",
-          avatar: "https://avatars0.githubusercontent.com/u/37030530?s=400&u=f705aa3b2f6167576c8024dada66351655195c81&v=4"
+          avatar:
+            "https://avatars0.githubusercontent.com/u/37030530?s=400&u=f705aa3b2f6167576c8024dada66351655195c81&v=4"
         },
         date: "04 Jun 2019",
         content: "Pessoal, alguém sabe se a Rocketseat está contratando?",
@@ -57,7 +72,8 @@ class PostList extends Component {
             id: 1,
             author: {
               name: "Diego Fernandes",
-              avatar: "https://avatars0.githubusercontent.com/u/37030530?s=400&u=f705aa3b2f6167576c8024dada66351655195c81&v=4"
+              avatar:
+                "https://avatars0.githubusercontent.com/u/37030530?s=400&u=f705aa3b2f6167576c8024dada66351655195c81&v=4"
             },
             content: "Conteúdo do comentário"
           }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import "./Post.css";
+import Comment from '../Comments/Comment';
 
 class Post extends Component {
   render() {
@@ -20,9 +21,10 @@ class Post extends Component {
             <p>{this.props.data.content}</p>
           </div>
           <div className="divider"></div>
-          <div>
-            Coments
-          </div>
+          {this.props.data.comments.map(comment => (
+            <Comment key={comment.id} comment={comment}/>
+          ))}
+          
         </div>
       </>
     );
