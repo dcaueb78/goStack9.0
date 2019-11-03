@@ -9,8 +9,8 @@ header#main-header .main-content {
   flex-direction: row;
   justify-content: space-between;
   margin: 0 auto;
-  padding: 0 30px;
-  max-width: 1200px;
+  padding: 0 10px;
+  max-width: 1290px;
 }
 
 header#main-header .main-content .logo img {

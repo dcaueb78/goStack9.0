@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Logo from "../../assets/facebook.svg";
 import Profile from "../../assets/profile.jpeg";
 import "./Header.css";
@@ -10,7 +9,7 @@ function Header() {
       <header id="main-header">
         <div className="main-content">
           <div className="logo">
-            <img src={Logo} alt="Logo" id="oi" />
+            <img src={Logo} alt="Logo" />
           </div>
           <div className="side">
             <p>Meu perfil</p>
