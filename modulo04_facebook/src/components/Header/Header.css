@@ -1,0 +1,38 @@
+header#main-header {
+  background: rgba(179, 59, 157, 255);
+  height: 50px;
+  box-shadow: 0 2px 3px rgba(0,0,0, 0.25);
+}
+
+header#main-header .main-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0 30px;
+  max-width: 1200px;
+}
+
+header#main-header .main-content .logo img {
+  height: 38px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+
+header#main-header .main-content .side {
+  display: flex;
+  align-items: center;
+}
+
+header#main-header .main-content .side img {
+  height: 34px;
+  border-radius: 50%;
+  box-shadow: 0 2px 3px rgba(0,0,0, 0.25);
+}
+
+header#main-header .main-content .side p {
+  font-weight: 800;
+  margin-right: 10px;
+  color: rgba(121, 224, 221, 255)
+}
