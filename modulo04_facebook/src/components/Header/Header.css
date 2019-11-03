@@ -1,5 +1,5 @@
 header#main-header {
-  background: rgba(179, 59, 157, 255);
+  background: rgba(179, 59, 157);
   height: 50px;
   box-shadow: 0 2px 3px rgba(0,0,0, 0.25);
 }
@@ -34,5 +34,5 @@ header#main-header .main-content .side img {
 header#main-header .main-content .side p {
   font-weight: 800;
   margin-right: 10px;
-  color: rgba(121, 224, 221, 255);
+  color: white;
 }

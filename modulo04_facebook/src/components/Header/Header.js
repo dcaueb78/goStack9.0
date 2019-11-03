@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../assets/facebook.svg";
+import Logo from "../../assets/facebookicon.svg";
 import Profile from "../../assets/profile.jpeg";
 import "./Header.css";
 

@@ -27,6 +27,7 @@ div.comment div.comment-content b {
 }
 
 div.comment div.comment-content p {
+  line-height: 25px;
   margin-right: 10px;
   color: rgb(58, 58, 58);
 }

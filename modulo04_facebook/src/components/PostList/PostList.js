@@ -29,30 +29,32 @@ class PostList extends Component {
           {
             id: 2,
             author: {
-              name: "Diego Fernandes",
+              name: "Cauê Kotarski",
               avatar:
                 "https://avatars0.githubusercontent.com/u/37030530?s=400&u=f705aa3b2f6167576c8024dada66351655195c81&v=4"
             },
-            content: "Conteúdo do comentário"
+            content: "Ohh, tenho vontade de ensinar sim!"
           }
         ]
       },
       {
         id: 2,
         author: {
-          name: "Julio Alcantara",
+          name: "Cauê Kotarski",
           avatar:
             "https://avatars0.githubusercontent.com/u/37030530?s=400&u=f705aa3b2f6167576c8024dada66351655195c81&v=4"
         },
-        date: "04 Jun 2019",
-        content: "Pessoal, alguém sabe se a Rocketseat está contratando?",
+        date: "01 Nov 2019",
+        content: `Fala galera, beleza?
+        Estou fazendo o Bootcamp GoStack da Rocketseat e está sendo muito massa! Alguém mais aí fazendo, comenta na 
+        publicação para trocarmos uma ideia.`,
         comments: [
           {
             id: 1,
             author: {
               name: "Diego Fernandes",
               avatar:
-                "https://avatars0.githubusercontent.com/u/37030530?s=400&u=f705aa3b2f6167576c8024dada66351655195c81&v=4"
+                "https://avatars1.githubusercontent.com/u/2254731?s=400&v=4"
             },
             content: "Conteúdo do comentário"
           }
