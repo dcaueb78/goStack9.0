@@ -10,7 +10,7 @@ class PostList extends Component {
         id: 1,
         author: {
           name: "Julio Alcantara",
-          avatar: "http://url-da-imagem.com/imagem.jpg"
+          avatar: "https://avatars0.githubusercontent.com/u/37030530?s=400&u=f705aa3b2f6167576c8024dada66351655195c81&v=4"
         },
         date: "04 Jun 2019",
         content: "Pessoal, alguém sabe se a Rocketseat está contratando?",
@@ -19,7 +19,7 @@ class PostList extends Component {
             id: 1,
             author: {
               name: "Diego Fernandes",
-              avatar: "http://url-da-imagem.com/imagem.jpg"
+              avatar: "https://avatars0.githubusercontent.com/u/37030530?s=400&u=f705aa3b2f6167576c8024dada66351655195c81&v=4"
             },
             content: "Conteúdo do comentário"
           }
@@ -29,7 +29,7 @@ class PostList extends Component {
         id: 2,
         author: {
           name: "Julio Alcantara",
-          avatar: "http://url-da-imagem.com/imagem.jpg"
+          avatar: "https://avatars0.githubusercontent.com/u/37030530?s=400&u=f705aa3b2f6167576c8024dada66351655195c81&v=4"
         },
         date: "04 Jun 2019",
         content: "Pessoal, alguém sabe se a Rocketseat está contratando?",
@@ -38,7 +38,7 @@ class PostList extends Component {
             id: 1,
             author: {
               name: "Diego Fernandes",
-              avatar: "http://url-da-imagem.com/imagem.jpg"
+              avatar: "https://avatars0.githubusercontent.com/u/37030530?s=400&u=f705aa3b2f6167576c8024dada66351655195c81&v=4"
             },
             content: "Conteúdo do comentário"
           }
@@ -48,7 +48,7 @@ class PostList extends Component {
         id: 3,
         author: {
           name: "Julio Alcantara",
-          avatar: "http://url-da-imagem.com/imagem.jpg"
+          avatar: "https://avatars0.githubusercontent.com/u/37030530?s=400&u=f705aa3b2f6167576c8024dada66351655195c81&v=4"
         },
         date: "04 Jun 2019",
         content: "Pessoal, alguém sabe se a Rocketseat está contratando?",
@@ -57,7 +57,7 @@ class PostList extends Component {
             id: 1,
             author: {
               name: "Diego Fernandes",
-              avatar: "http://url-da-imagem.com/imagem.jpg"
+              avatar: "https://avatars0.githubusercontent.com/u/37030530?s=400&u=f705aa3b2f6167576c8024dada66351655195c81&v=4"
             },
             content: "Conteúdo do comentário"
           }
