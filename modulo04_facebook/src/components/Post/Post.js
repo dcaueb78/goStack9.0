@@ -12,14 +12,17 @@ class Post extends Component {
               <img src={this.props.data.author.avatar} />
             </div>
             <div className="author-infos">
-              <bold className="autor-name">{this.props.data.author.name}</bold>
+              <b className="autor-name">{this.props.data.author.name}</b>
               <p className="post-date">{this.props.data.date}</p>
             </div>
           </div>
-          {/* <hr/>
+          <div className="post-content">
+            <p>{this.props.data.content}</p>
+          </div>
+          <div className="divider"></div>
           <div>
             Coments
-          </div> */}
+          </div>
         </div>
       </>
     );
