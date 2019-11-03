@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "./PostList.css";
+import Post from "../Post/Post";
 
 class PostList extends Component {
   state = {
@@ -25,8 +26,42 @@ class PostList extends Component {
         ]
       },
       {
-        id: 2
-        // Restante dos dados de um novo post
+        id: 2,
+        author: {
+          name: "Julio Alcantara",
+          avatar: "http://url-da-imagem.com/imagem.jpg"
+        },
+        date: "04 Jun 2019",
+        content: "Pessoal, alguém sabe se a Rocketseat está contratando?",
+        comments: [
+          {
+            id: 1,
+            author: {
+              name: "Diego Fernandes",
+              avatar: "http://url-da-imagem.com/imagem.jpg"
+            },
+            content: "Conteúdo do comentário"
+          }
+        ]
+      },
+      {
+        id: 3,
+        author: {
+          name: "Julio Alcantara",
+          avatar: "http://url-da-imagem.com/imagem.jpg"
+        },
+        date: "04 Jun 2019",
+        content: "Pessoal, alguém sabe se a Rocketseat está contratando?",
+        comments: [
+          {
+            id: 1,
+            author: {
+              name: "Diego Fernandes",
+              avatar: "http://url-da-imagem.com/imagem.jpg"
+            },
+            content: "Conteúdo do comentário"
+          }
+        ]
       }
     ]
   };
@@ -46,7 +81,9 @@ class PostList extends Component {
         <div className="content">
           <aside></aside>
           <section className="timeline">
-            <div>oi</div>
+            {this.state.posts.map(post => (
+              <Post key={post.id} data={post} />
+            ))}
           </section>
           <aside></aside>
         </div>
