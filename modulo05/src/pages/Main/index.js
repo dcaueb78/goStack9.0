@@ -9,6 +9,7 @@ import api from '../../services/api';
 export default class Main extends Component {
   state = {
     newRepo: '',
+    repositories: [],
   };
 
   handleInputChange = e => {
@@ -17,10 +18,17 @@ export default class Main extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    const { newRepo } = this.state;
+    const { newRepo, repositories } = this.state;
     const response = await api.get(`/repos/${newRepo}`);
 
-    console.log(response.data);
+    const data = {
+      name: response.data.full_name,
+    };
+
+    this.setState({
+      repositories: [...repositories, data],
+      newRepo: '',
+    });
   };
 
   render() {
