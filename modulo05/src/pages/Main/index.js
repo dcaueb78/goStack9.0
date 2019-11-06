@@ -6,11 +6,8 @@ import { Container, Form, SubmitButton } from './styles';
 
 import api from '../../services/api';
 
-export default class Main extends Component {
-  state = {
-    newRepo: '',
-    repositories: [],
-  };
+class Main extends Component {
+  state = { newRepo: '', repositories: [], loading: false };
 
   handleInputChange = e => {
     this.setState({ newRepo: e.target.value });
@@ -19,6 +16,8 @@ export default class Main extends Component {
   handleSubmit = async e => {
     e.preventDefault();
     const { newRepo, repositories } = this.state;
+
+    this.setState({ loading: true });
     const response = await api.get(`/repos/${newRepo}`);
 
     const data = {
@@ -28,11 +27,12 @@ export default class Main extends Component {
     this.setState({
       repositories: [...repositories, data],
       newRepo: '',
+      loading: false,
     });
   };
 
   render() {
-    const { newRepo } = this.state;
+    const { newRepo, loading } = this.state;
 
     return (
       <Container>
@@ -48,7 +48,7 @@ export default class Main extends Component {
             onChange={this.handleInputChange}
           />
 
-          <SubmitButton>
+          <SubmitButton loading={loading}>
             <FaPlus color="#FFF" size={14} />
           </SubmitButton>
         </Form>
@@ -56,3 +56,5 @@ export default class Main extends Component {
     );
   }
 }
+
+export default Main;
