@@ -165,3 +165,34 @@ export const FilterList = styled.div`
     }
   }
 `;
+
+export const PaginationButton = styled.button.attrs(props => ({
+  disabled: props.disabled,
+}))`
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+`;
+
+export const Pagination = styled.div`
+  color: #7159c1;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: right;
+    width: 30%;
+    svg {
+    }
+  }
+`;

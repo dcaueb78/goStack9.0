@@ -3,11 +3,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { FaSpinner, FaArrowLeft } from 'react-icons/fa';
+import { FaSpinner, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import api from '../../services/api';
 
 import Container from '../../components/Container';
-import { Loading, Owner, IssueList, FilterList } from './styles';
+import {
+  Loading,
+  Owner,
+  IssueList,
+  FilterList,
+  Pagination,
+  PaginationButton,
+} from './styles';
 
 export default class Repository extends Component {
   static propTypes = {
@@ -22,6 +29,7 @@ export default class Repository extends Component {
     repository: {},
     issues: [],
     loading: true,
+    page: 1,
   };
 
   async componentDidMount() {
@@ -31,7 +39,7 @@ export default class Repository extends Component {
 
     const [repository, issues] = await Promise.all([
       api.get(`/repos/${repoName}`),
-      this.getIssues(repoName),
+      this.getIssues(),
     ]);
 
     this.setState({
@@ -41,11 +49,17 @@ export default class Repository extends Component {
     });
   }
 
-  getIssues = async (repoName, state) => {
+  getIssues = async state => {
+    const { match } = this.props;
+    const { page } = this.state;
+
+    const repoName = decodeURIComponent(match.params.repository);
+
     const issues = await api.get(`/repos/${repoName}/issues`, {
       params: {
         state: state || 'all',
-        per_page: 5,
+        page: page || 1,
+        per_page: 30,
       },
     });
     return issues;
@@ -53,15 +67,12 @@ export default class Repository extends Component {
 
   handleFilter = async (e, state) => {
     e.preventDefault();
-    const { match } = this.props;
 
     this.setState({
       loading: true,
     });
 
-    const repoName = decodeURIComponent(match.params.repository);
-
-    const issues = await this.getIssues(repoName, state);
+    const issues = await this.getIssues(state);
 
     this.setState({
       issues: issues.data,
@@ -69,8 +80,24 @@ export default class Repository extends Component {
     });
   };
 
+  handlePageUpdate = async action => {
+    const { page, state } = this.state;
+    this.setState({
+      loading: true,
+    });
+    this.setState({
+      page: action === 'next' ? page + 1 : page - 1,
+    });
+
+    const issues = await this.getIssues(state, page);
+    this.setState({
+      issues: issues.data,
+      loading: false,
+    });
+  };
+
   render() {
-    const { repository, issues, loading } = this.state;
+    const { repository, issues, loading, page } = this.state;
 
     if (loading) {
       return (
@@ -130,6 +157,21 @@ export default class Repository extends Component {
             </li>
           ))}
         </IssueList>
+        <Pagination>
+          <b>Página {page}</b>
+          <div>
+            <PaginationButton
+              disabled={page === 1}
+              onClick={() => this.handlePageUpdate('previous')}
+            >
+              <FaArrowLeft size="18" />
+            </PaginationButton>
+
+            <PaginationButton onClick={() => this.handlePageUpdate('next')}>
+              <FaArrowRight size="18" />
+            </PaginationButton>
+          </div>
+        </Pagination>
       </Container>
     );
   }
