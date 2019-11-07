@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import api from '../../services/api';
 
 import Container from '../../components/Container';
-import { Loading, Owner, IssueList } from './styles';
+import { Loading, Owner, IssueList, FilterList } from './styles';
 
 export default class Repository extends Component {
   static propTypes = {
@@ -30,12 +30,7 @@ export default class Repository extends Component {
 
     const [repository, issues] = await Promise.all([
       api.get(`/repos/${repoName}`),
-      api.get(`/repos/${repoName}/issues`, {
-        params: {
-          state: 'open',
-          per_page: 5,
-        },
-      }),
+      this.getIssues(repoName),
     ]);
 
     this.setState({
@@ -44,6 +39,29 @@ export default class Repository extends Component {
       loading: false,
     });
   }
+
+  getIssues = async (repoName, state) => {
+    const issues = await api.get(`/repos/${repoName}/issues`, {
+      params: {
+        state,
+        per_page: 5,
+      },
+    });
+    return issues;
+  };
+
+  handleFilter = async (e, state) => {
+    e.preventDefault();
+    const { match } = this.props;
+
+    const repoName = decodeURIComponent(match.params.repository);
+
+    const issues = await this.getIssues(repoName, state);
+
+    this.setState({
+      issues: issues.data,
+    });
+  };
 
   render() {
     const { repository, issues, loading } = this.state;
@@ -60,12 +78,30 @@ export default class Repository extends Component {
           <h1>{repository.name}</h1>
           <p>{repository.description}</p>
         </Owner>
-
+        <FilterList>
+          <div>
+            <bold>Filtrar</bold>
+            <div>
+              <button onClick={e => this.handleFilter(e, 'all')} type="button">
+                All
+              </button>
+              <button onClick={e => this.handleFilter(e, 'open')} type="button">
+                Open
+              </button>
+              <button
+                onClick={e => this.handleFilter(e, 'closed')}
+                type="button"
+              >
+                Closed
+              </button>
+            </div>
+          </div>
+        </FilterList>
         <IssueList>
           {issues.map(issue => (
             <li key={String(issue.id)}>
               <img src={issue.user.avatar_url} alt={issue.user.login} />
-              <div>
+              <div className="issue-row">
                 <strong>
                   <a href={issue.html_url}>{issue.title}</a>
                   {issue.labels.map(label => (
