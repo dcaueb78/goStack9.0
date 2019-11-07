@@ -43,7 +43,7 @@ export default class Repository extends Component {
   getIssues = async (repoName, state) => {
     const issues = await api.get(`/repos/${repoName}/issues`, {
       params: {
-        state,
+        state: state || 'all',
         per_page: 5,
       },
     });
