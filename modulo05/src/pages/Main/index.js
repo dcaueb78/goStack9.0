@@ -37,11 +37,17 @@ class Main extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
+    const { repositories } = this.state;
 
     try {
-      const { newRepo, repositories } = this.state;
-
       this.setState({ loading: true });
+      const { newRepo } = this.state;
+
+      repositories.forEach(repository => {
+        if (newRepo === repository.name) {
+          throw new Error('Repositório duplicado');
+        }
+      });
       const response = await api.get(`/repos/${newRepo}`);
 
       const data = {
