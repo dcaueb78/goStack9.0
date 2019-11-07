@@ -54,12 +54,17 @@ export default class Repository extends Component {
     e.preventDefault();
     const { match } = this.props;
 
+    this.setState({
+      loading: true,
+    });
+
     const repoName = decodeURIComponent(match.params.repository);
 
     const issues = await this.getIssues(repoName, state);
 
     this.setState({
       issues: issues.data,
+      loading: false,
     });
   };
 
