@@ -51,6 +51,14 @@ export default class Repository extends Component {
       return <Loading>Carregando</Loading>;
     }
 
-    return <Container> Repositório: </Container>;
+    return (
+      <Container>
+        <Owner>
+          <img src={repository.owner.avatar_url} alt={repository.owner.login} />
+          <h1>{repository.name}</h1>
+          <p>{repository.description}</p>
+        </Owner>
+      </Container>
+    );
   }
 }
