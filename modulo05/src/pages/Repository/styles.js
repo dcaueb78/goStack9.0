@@ -36,6 +36,14 @@ export const Owner = styled.header`
   flex-direction: column;
   align-items: center;
 
+  div {
+    width: 100%;
+
+    svg {
+      left: 0;
+    }
+  }
+
   img {
     width: 120px;
     border-radius: 50%;
