@@ -21,6 +21,12 @@ export const Owner = styled.header`
     margin-top: 20px;
   }
 
+  a {
+    color: #9159c1;
+    font-size: 16px;
+    text-decoration: none;
+  }
+
   h1 {
     font-size: 24px;
     margin-top: 10px;
