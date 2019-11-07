@@ -36,8 +36,9 @@ class Main extends Component {
   };
 
   handleSubmit = async e => {
+    e.preventDefault();
+
     try {
-      e.preventDefault();
       const { newRepo, repositories } = this.state;
 
       this.setState({ loading: true });
