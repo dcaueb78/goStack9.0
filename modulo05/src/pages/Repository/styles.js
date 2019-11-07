@@ -1,4 +1,14 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`;
 
 export const Loading = styled.div`
   color: #fff;
@@ -8,6 +18,17 @@ export const Loading = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
+
+  div {
+    margin-left: 10px;
+    margin-top: 0;
+  }
+
+  ${css`
+    svg {
+      animation: ${rotate} 2s linear infinite;
+    }
+  `}
 `;
 
 export const Owner = styled.header`
@@ -43,8 +64,8 @@ export const Owner = styled.header`
 `;
 
 export const IssueList = styled.ul`
-  padding-top: 30px;
-  margin-top: 30px;
+  padding-top: 20px;
+  margin-top: 20px;
   border-top: 1px solid #eee;
   list-style: none;
 
@@ -103,8 +124,8 @@ export const IssueList = styled.ul`
 `;
 
 export const FilterList = styled.div`
-  padding-top: 30px;
-  margin-top: 30px;
+  padding-top: 20px;
+  margin-top: 20px;
   border-top: 1px solid #eee;
 
   div {
@@ -120,10 +141,14 @@ export const FilterList = styled.div`
     div {
       display: flex;
       flex-direction: row;
-      margin-top: 10px;
+      margin-top: 5px;
 
-      a {
+      button {
         margin-left: 10px;
+        padding: 0;
+        border: none;
+        background: none;
+        color: #999;
 
         &:firstchild {
           margin-left: 0;
