@@ -1,3 +1,4 @@
+/* eslint-disable react/state-in-constructor */
 import React, { Component } from 'react';
 
 import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa';
@@ -10,7 +11,7 @@ import Container from '../../components/Container';
 import api from '../../services/api';
 
 class Main extends Component {
-  state = { newRepo: '', repositories: [], loading: false };
+  state = { newRepo: '', repositories: [], loading: false, inputError: false };
 
   // carregar os dados do local storages
   componentDidMount() {
@@ -35,25 +36,30 @@ class Main extends Component {
   };
 
   handleSubmit = async e => {
-    e.preventDefault();
-    const { newRepo, repositories } = this.state;
+    try {
+      e.preventDefault();
+      const { newRepo, repositories } = this.state;
 
-    this.setState({ loading: true });
-    const response = await api.get(`/repos/${newRepo}`);
+      this.setState({ loading: true });
+      const response = await api.get(`/repos/${newRepo}`);
 
-    const data = {
-      name: response.data.full_name,
-    };
+      const data = {
+        name: response.data.full_name,
+      };
 
-    this.setState({
-      repositories: [...repositories, data],
-      newRepo: '',
-      loading: false,
-    });
+      this.setState({
+        repositories: [...repositories, data],
+        newRepo: '',
+        loading: false,
+        inputError: false,
+      });
+    } catch (err) {
+      this.setState({ loading: false, inputError: true });
+    }
   };
 
   render() {
-    const { newRepo, repositories, loading } = this.state;
+    const { newRepo, repositories, loading, inputError } = this.state;
 
     return (
       <Container>
@@ -61,7 +67,7 @@ class Main extends Component {
           <FaGithubAlt />
           Repositórios
         </h1>
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit} inputError={inputError}>
           <input
             type="text"
             placeholder="Adicionar repositório"
