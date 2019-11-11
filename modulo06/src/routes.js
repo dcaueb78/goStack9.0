@@ -8,6 +8,7 @@ const Routes = createAppContainer(
   createStackNavigator(
     {
       Main,
+      User,
     },
     {
       headerLayoutPreset: 'center',
