@@ -14,7 +14,7 @@ export default function Main() {
         />
         <SubmitButton>
           {/* erro no icon */}
-          <Icon name="add" size={20} color="red" />
+          <Icon name="add" size={20} color="#fff" />
         </SubmitButton>
       </Form>
     </Container>
