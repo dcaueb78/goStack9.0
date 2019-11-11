@@ -58,7 +58,7 @@ export default class User extends Component {
           keyExtractor={star => String(star.id)}
           renderItem={({item}) => (
             <Starred>
-              <OwnerAvatar soure={{uri: item.owner.avatar_url}} />
+              <OwnerAvatar source={{uri: item.owner.avatar_url}} />
               <Info>
                 <Title>{item.name}</Title>
                 <Author>{item.owner.login}</Author>
