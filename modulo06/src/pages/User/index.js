@@ -27,6 +27,7 @@ export default class User extends Component {
     loading: false,
     page: 1,
     loadingMoreStareds: false,
+    refreshing: false,
   };
 
   async componentDidMount() {
@@ -34,12 +35,27 @@ export default class User extends Component {
       loading: true,
     });
 
-    await this.loadStars();
+    await this.loadStars(1);
 
     this.setState({
       loading: false,
     });
   }
+
+  refreshList = async () => {
+    this.setState({
+      refreshing: true,
+      page: 1,
+      loading: true,
+    });
+
+    await this.loadStars(1);
+
+    this.setState({
+      refreshing: false,
+      loading: false,
+    });
+  };
 
   loadMore = async () => {
     const {page} = this.state;
@@ -47,6 +63,7 @@ export default class User extends Component {
 
     this.setState({
       loadingMoreStareds: true,
+      page: nextPage,
     });
 
     await this.loadStars(nextPage);
@@ -56,26 +73,28 @@ export default class User extends Component {
     });
   };
 
-  loadStars = async nextPage => {
+  loadStars = async page => {
     const {navigation} = this.props;
     const user = navigation.getParam('user');
 
     const perPage = 10;
     const {stars} = this.state;
-
-    if (nextPage) {
-      this.setState({
-        page: nextPage,
-      });
-    }
-
+    console.log(page);
     const response = await api.get(
-      `/users/${user.login}/starred?page=${nextPage}&per_page=${perPage}`,
+      `/users/${user.login}/starred?page=${page}&per_page=${perPage}`,
     );
 
-    this.setState({
-      stars: [...stars, ...response.data],
-    });
+    if (page >= 2) {
+      this.setState({
+        stars: [...stars, ...response.data],
+        refreshing: false,
+      });
+    } else {
+      this.setState({
+        stars: response.data,
+        refreshing: false,
+      });
+    }
   };
 
   static PropTypes = {
@@ -108,6 +127,8 @@ export default class User extends Component {
         ) : (
           <>
             <Stars
+              onRefresh={this.refreshList}
+              refreshing={this.state.refreshing}
               onEndReachedThreshold={0.2} // Carrega mais itens quando chegar em 20% do fim
               onEndReached={this.loadMore} // Função que carrega mais itens
               data={stars}
