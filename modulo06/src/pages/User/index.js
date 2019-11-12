@@ -26,6 +26,7 @@ export default class User extends Component {
   state = {
     stars: [],
     loading: false,
+    page: 1,
   };
 
   static PropTypes = {
@@ -50,9 +51,16 @@ export default class User extends Component {
     });
   }
 
+  loadMore = async () => {
+    const {page} = this.state;
+    this.setState({
+      page: page + 1,
+    });
+  };
+
   render() {
     const {navigation} = this.props;
-    const {stars, loading} = this.state;
+    const {stars, loading, page} = this.state;
     const user = navigation.getParam('user');
 
     return (
@@ -67,6 +75,8 @@ export default class User extends Component {
           <Loading />
         ) : (
           <Stars
+            onEndReachedThreshold={0.2} // Carrega mais itens quando chegar em 20% do fim
+            onEndReached={this.loadMore} // Função que carrega mais itens
             data={stars}
             keyExtractor={star => String(star.id)}
             renderItem={({item}) => (
