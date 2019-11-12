@@ -29,38 +29,62 @@ export default class User extends Component {
     page: 1,
   };
 
-  static PropTypes = {
-    navigation: PropTypes.shape({
-      getParam: PropTypes.func,
-    }).isRequired,
-  };
-
   async componentDidMount() {
-    const {navigation} = this.props;
-    const user = navigation.getParam('user');
-
     this.setState({
       loading: true,
     });
 
-    const response = await api.get(`/users/${user.login}/starred`);
+    await this.loadStars();
 
     this.setState({
-      stars: response.data,
       loading: false,
     });
   }
 
   loadMore = async () => {
     const {page} = this.state;
+    const nextPage = page + 1;
+
+    await this.loadStars(nextPage);
+  };
+
+  loadStars = async nextPage => {
+    const {navigation} = this.props;
+    const user = navigation.getParam('user');
+
+    const perPage = 10;
+    const {stars} = this.state;
+
+    if (nextPage) {
+      this.setState({
+        page: nextPage,
+      });
+    }
+
+    const response = await api.get(
+      `/users/${user.login}/starred?page=${nextPage}&per_page=${perPage}`,
+    );
+
     this.setState({
-      page: page + 1,
+      stars: [...stars, ...response.data],
     });
+  };
+
+  static PropTypes = {
+    navigation: PropTypes.shape({
+      getParam: PropTypes.func,
+    }).isRequired,
+  };
+
+  static PropTypes = {
+    navigation: PropTypes.shape({
+      getParam: PropTypes.func,
+    }).isRequired,
   };
 
   render() {
     const {navigation} = this.props;
-    const {stars, loading, page} = this.state;
+    const {stars, loading} = this.state;
     const user = navigation.getParam('user');
 
     return (
