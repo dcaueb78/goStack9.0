@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {ActivityIndicator} from 'react-native';
 import api from '../../services/api';
 
 import {
@@ -27,6 +26,7 @@ export default class User extends Component {
     stars: [],
     loading: false,
     page: 1,
+    loadingMoreStareds: false,
   };
 
   async componentDidMount() {
@@ -45,7 +45,15 @@ export default class User extends Component {
     const {page} = this.state;
     const nextPage = page + 1;
 
+    this.setState({
+      loadingMoreStareds: true,
+    });
+
     await this.loadStars(nextPage);
+
+    this.setState({
+      loadingMoreStareds: false,
+    });
   };
 
   loadStars = async nextPage => {
@@ -84,7 +92,7 @@ export default class User extends Component {
 
   render() {
     const {navigation} = this.props;
-    const {stars, loading} = this.state;
+    const {stars, loading, loadingMoreStareds} = this.state;
     const user = navigation.getParam('user');
 
     return (
@@ -98,21 +106,24 @@ export default class User extends Component {
         {loading ? (
           <Loading />
         ) : (
-          <Stars
-            onEndReachedThreshold={0.2} // Carrega mais itens quando chegar em 20% do fim
-            onEndReached={this.loadMore} // Função que carrega mais itens
-            data={stars}
-            keyExtractor={star => String(star.id)}
-            renderItem={({item}) => (
-              <Starred>
-                <OwnerAvatar source={{uri: item.owner.avatar_url}} />
-                <Info>
-                  <Title>{item.name}</Title>
-                  <Author>{item.owner.login}</Author>
-                </Info>
-              </Starred>
-            )}
-          />
+          <>
+            <Stars
+              onEndReachedThreshold={0.2} // Carrega mais itens quando chegar em 20% do fim
+              onEndReached={this.loadMore} // Função que carrega mais itens
+              data={stars}
+              keyExtractor={star => String(star.id)}
+              renderItem={({item}) => (
+                <Starred>
+                  <OwnerAvatar source={{uri: item.owner.avatar_url}} />
+                  <Info>
+                    <Title>{item.name}</Title>
+                    <Author>{item.owner.login}</Author>
+                  </Info>
+                </Starred>
+              )}
+            />
+            {loadingMoreStareds ? <Loading /> : <></>}
+          </>
         )}
       </Container>
     );
