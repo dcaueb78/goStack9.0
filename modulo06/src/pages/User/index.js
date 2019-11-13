@@ -97,6 +97,12 @@ export default class User extends Component {
     }
   };
 
+  handleNavigate = repository => {
+    const {navigation} = this.props;
+
+    navigation.navigate('FavoriteRepository', {repository});
+  };
+
   static PropTypes = {
     navigation: PropTypes.shape({
       getParam: PropTypes.func,
@@ -111,7 +117,7 @@ export default class User extends Component {
 
   render() {
     const {navigation} = this.props;
-    const {stars, loading, loadingMoreStareds} = this.state;
+    const {stars, loading, loadingMoreStareds, refreshing} = this.state;
     const user = navigation.getParam('user');
 
     return (
@@ -128,13 +134,13 @@ export default class User extends Component {
           <>
             <Stars
               onRefresh={this.refreshList}
-              refreshing={this.state.refreshing}
+              refreshing={refreshing}
               onEndReachedThreshold={0.2} // Carrega mais itens quando chegar em 20% do fim
               onEndReached={this.loadMore} // Função que carrega mais itens
               data={stars}
               keyExtractor={star => String(star.id)}
               renderItem={({item}) => (
-                <Starred>
+                <Starred onPress={() => this.handleNavigate(item)}>
                   <OwnerAvatar source={{uri: item.owner.avatar_url}} />
                   <Info>
                     <Title>{item.name}</Title>
