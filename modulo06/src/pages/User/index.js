@@ -79,9 +79,8 @@ export default class User extends Component {
 
     const perPage = 10;
     const {stars} = this.state;
-    console.log(page);
     const response = await api.get(
-      `/users/${user.login}/starred?page=${page}&per_page=${perPage}`,
+      `/users/${user.login}/starred?page=${page}&per_page=${perPage}`
     );
 
     if (page >= 2) {
